@@ -35,6 +35,45 @@ HGLRC g_openGLRenderingContext = nullptr;			// ...becomes void* Renderer::m_apiR
 char const* APP_NAME = "Windows OpenGL Test App";	// ...becomes ??? (Change this per project!)
 
 
+
+//struct Vec3 {
+//	float x;
+//	float y;
+//	float z;
+//};
+//
+//struct  Rgba8
+//{
+//	unsigned char r;
+//	unsigned char g;
+//	unsigned char b;
+//	unsigned char a;
+//
+//};
+//
+//struct Vertex
+//{
+//	Vec3 m_pos;
+//	Rgba8 m_color;
+//	Vec2 m_uvTexCoords;
+//};
+//
+//void DrawVertexArray(int numVertexes, Vertex const* vertexArray)
+//{
+//	glBegin(GL_TRIANGLES);
+//	for (int i = 0; i < numVertexes; i++) 
+//	{
+//		Vertex vert = vertexArray[i];
+//		glColor4ub(vert.m_color.r, vert.m_color.g, vert.m_color.b, vert.m_color.a);
+//		glTexCoord2f(vert.m_uvTexCoords.x, vert.m_uvTexCoords.y);
+//		glVertex3f(vert.m_pos.x, vert.m_pos.y, vert.m_pos.z);
+//	
+//	}
+//	glEnd();
+//}
+
+
+
 //-----------------------------------------------------------------------------------------------
 // Handles Windows (Win32) messages/events; i.e. the OS is trying to tell us something happened.
 // This function is called back by Windows whenever we tell it to (by calling DispatchMessage).
@@ -304,6 +343,8 @@ void App_Render()
 		glVertex2f( 6.f, 7.f );
 	}
 	glEnd();
+
+	// DrawVertexArray(3, startshiparray);
 }
 
 
@@ -350,5 +391,6 @@ int WINAPI WinMain( HINSTANCE applicationInstanceHandle, HINSTANCE, LPSTR comman
 
 	return 0;
 }
+
 
 
