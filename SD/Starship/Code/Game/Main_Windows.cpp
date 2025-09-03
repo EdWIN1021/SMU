@@ -10,6 +10,8 @@
 // Both of the following lines will eventually move to the top of Engine/Renderer/Renderer.cpp
 //
 #include <gl/gl.h>					// Include basic OpenGL constants and function declarations
+#include "PlayerShip.hpp"
+#include "Engine/Core/Vertex.hpp"
 #pragma comment( lib, "opengl32" )	// Link in the OpenGL32.lib static library
 
 
@@ -18,11 +20,24 @@
 //
 #define UNUSED(x) (void)(x);
 
+/* ships */
+PlayerShip* g_ship1 = nullptr;
+PlayerShip* g_ship2 = nullptr;
+PlayerShip* g_ship3 = nullptr;
+
+bool isSlowMode = false;
+bool isPause = false;
+bool isSingleStep = false;
 
 //-----------------------------------------------------------------------------------------------
 // #SD1ToDo: This will eventually go away once we add a Window engine class later on.
 // 
-constexpr float CLIENT_ASPECT = 1.0f; // We are requesting a 1:1 aspect (square) window area
+
+/* 2:1 */
+constexpr float CLIENT_ASPECT = 2.0f; // We are requesting a 1:1 aspect (square) window area
+
+/* TODO: move to another file */
+constexpr float RGB_SCALE = 255.f;
 
 
 //-----------------------------------------------------------------------------------------------
@@ -35,43 +50,35 @@ HGLRC g_openGLRenderingContext = nullptr;			// ...becomes void* Renderer::m_apiR
 char const* APP_NAME = "Windows OpenGL Test App";	// ...becomes ??? (Change this per project!)
 
 
-
-//struct Vec3 {
-//	float x;
-//	float y;
-//	float z;
-//};
-//
-//struct  Rgba8
-//{
-//	unsigned char r;
-//	unsigned char g;
-//	unsigned char b;
-//	unsigned char a;
-//
-//};
-//
-//struct Vertex
-//{
-//	Vec3 m_pos;
-//	Rgba8 m_color;
-//	Vec2 m_uvTexCoords;
+//Vertex vertexArray[] = {
+//	Vertex(Vec3(4.f, 0.f, 0.f), Rgba8(255, 255, 255, 1), Vec2(0.f, 0.f)),
+//	Vertex(Vec3(-2.f, 2.f, 0.f), Rgba8(0, 127, 255, 1), Vec2(0.f, 0.f)),
+//	Vertex(Vec3(-2.f, -2.f, 0.f), Rgba8(0, 0, 0, 1), Vec2(0.f, 0.f))
 //};
 //
 //void DrawVertexArray(int numVertexes, Vertex const* vertexArray)
 //{
 //	glBegin(GL_TRIANGLES);
-//	for (int i = 0; i < numVertexes; i++) 
+//	for (int i = 0; i < numVertexes; i++)
 //	{
 //		Vertex vert = vertexArray[i];
 //		glColor4ub(vert.m_color.r, vert.m_color.g, vert.m_color.b, vert.m_color.a);
 //		glTexCoord2f(vert.m_uvTexCoords.x, vert.m_uvTexCoords.y);
-//		glVertex3f(vert.m_pos.x, vert.m_pos.y, vert.m_pos.z);
-//	
+//		glVertex3f(vert.m_position.x, vert.m_position.y, vert.m_position.z);
 //	}
 //	glEnd();
 //}
 
+/* TODO: move to another file */
+void ClearColor(float r, float g, float b, float a)
+{
+	glClearColor(r / RGB_SCALE, g / RGB_SCALE, b / RGB_SCALE, a); // Note; glClearColor takes colors as floats in [0,1], not bytes in [0,255]
+}
+
+void TogglePause()
+{
+	isPause = !isPause;
+}
 
 
 //-----------------------------------------------------------------------------------------------
@@ -80,64 +87,92 @@ char const* APP_NAME = "Windows OpenGL Test App";	// ...becomes ??? (Change this
 //
 // #SD1ToDo: Eventually, we will move this function to a more appropriate place (Engine/Window/Window.cpp) later on...
 //
-LRESULT CALLBACK WindowsMessageHandlingProcedure( HWND windowHandle, UINT wmMessageCode, WPARAM wParam, LPARAM lParam )
+LRESULT CALLBACK WindowsMessageHandlingProcedure(HWND windowHandle, UINT wmMessageCode, WPARAM wParam, LPARAM lParam)
 {
-	switch( wmMessageCode )
+	switch (wmMessageCode)
 	{
 		// App close requested via "X" button, or right-click "Close Window" on task bar, or "Close" from system menu, or Alt-F4
-		case WM_CLOSE:
+	case WM_CLOSE:
+	{
+		g_isQuitting = true;
+		return 0; // "Consumes" this message (tells Windows "okay, we handled it")
+	}
+
+	// Raw physical keyboard "key-was-just-depressed" event (case-insensitive, not translated)
+	case WM_KEYDOWN:
+	{
+		unsigned char asKey = (unsigned char)wParam;
+
+		// #SD1ToDo: Tell the App (or InputSystem later) about this key-pressed event...
+		if (asKey == VK_ESCAPE) // #SD1ToDo: move this "check for ESC pressed" code to App
+		{
+
+		}
+
+		if (asKey == 'T')
+		{
+			isSlowMode = true;
+		}
+
+		if (asKey == 'P')
+		{
+			TogglePause();
+		}
+
+
+		if (asKey == 'O')
+		{
+			isSingleStep = true;
+			isPause = false;
+		}
+
+		if (asKey == 'Q')
 		{
 			g_isQuitting = true;
 			return 0; // "Consumes" this message (tells Windows "okay, we handled it")
 		}
 
-		// Raw physical keyboard "key-was-just-depressed" event (case-insensitive, not translated)
-		case WM_KEYDOWN:
-		{
-			unsigned char asKey = (unsigned char)wParam;
+		break;
+	}
 
-			// #SD1ToDo: Tell the App (or InputSystem later) about this key-pressed event...
-			if( asKey == VK_ESCAPE ) // #SD1ToDo: move this "check for ESC pressed" code to App
-			{
-				g_isQuitting = true;
-				return 0; // "Consumes" this message (tells Windows "okay, we handled it")
-			}
-			break;
+	// Raw physical keyboard "key-was-just-released" event (case-insensitive, not translated)
+	case WM_KEYUP:
+	{
+		unsigned char asKey = (unsigned char)wParam;
+
+		if (asKey == 'T')
+		{
+			isSlowMode = false;
 		}
 
-		// Raw physical keyboard "key-was-just-released" event (case-insensitive, not translated)
-		case WM_KEYUP:
-		{
-			unsigned char asKey = (unsigned char) wParam;
-
-			// #SD1ToDo: Tell the App (or InputSystem later) about this key-released event...
-			break;
-		}
+		// #SD1ToDo: Tell the App (or InputSystem later) about this key-released event...
+		break;
+	}
 	}
 
 	// Send back to Windows any unhandled/unconsumed messages we want other apps to see (e.g. play/pause in music apps, etc.)
-	return DefWindowProc( windowHandle, wmMessageCode, wParam, lParam );
+	return DefWindowProc(windowHandle, wmMessageCode, wParam, lParam);
 }
 
 
 //-----------------------------------------------------------------------------------------------
 // #SD1ToDo: We will move this function to a more appropriate place later on... (Engine/Window/Window.cpp)
 //
-void CreateOSWindow( void* applicationInstanceHandle, float clientAspect )
+void CreateOSWindow(void* applicationInstanceHandle, float clientAspect)
 {
-	SetProcessDpiAwarenessContext( DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 );
+	SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
 
 	// Define a window style/class
 	WNDCLASSEX windowClassDescription;
-	memset( &windowClassDescription, 0, sizeof( windowClassDescription ) );
-	windowClassDescription.cbSize = sizeof( windowClassDescription );
+	memset(&windowClassDescription, 0, sizeof(windowClassDescription));
+	windowClassDescription.cbSize = sizeof(windowClassDescription);
 	windowClassDescription.style = CS_OWNDC; // Redraw on move, request own Display Context
 	windowClassDescription.lpfnWndProc = static_cast<WNDPROC>(WindowsMessageHandlingProcedure); // Register our Windows message-handling function
-	windowClassDescription.hInstance = GetModuleHandle( NULL );
+	windowClassDescription.hInstance = GetModuleHandle(NULL);
 	windowClassDescription.hIcon = NULL;
 	windowClassDescription.hCursor = NULL;
-	windowClassDescription.lpszClassName = TEXT( "Simple Window Class" );
-	RegisterClassEx( &windowClassDescription );
+	windowClassDescription.lpszClassName = TEXT("Simple Window Class");
+	RegisterClassEx(&windowClassDescription);
 
 	// #SD1ToDo: Add support for fullscreen mode (requires different window style flags than windowed mode)
 	DWORD const windowStyleFlags = WS_CAPTION | WS_BORDER | WS_THICKFRAME | WS_SYSMENU | WS_OVERLAPPED;
@@ -146,7 +181,7 @@ void CreateOSWindow( void* applicationInstanceHandle, float clientAspect )
 	// Get desktop rect, dimensions, aspect
 	RECT desktopRect;
 	HWND desktopWindowHandle = GetDesktopWindow();
-	GetClientRect( desktopWindowHandle, &desktopRect );
+	GetClientRect(desktopWindowHandle, &desktopRect);
 	float desktopWidth = (float)(desktopRect.right - desktopRect.left);
 	float desktopHeight = (float)(desktopRect.bottom - desktopRect.top);
 	float desktopAspect = desktopWidth / desktopHeight;
@@ -155,8 +190,9 @@ void CreateOSWindow( void* applicationInstanceHandle, float clientAspect )
 	constexpr float maxClientFractionOfDesktop = 0.90f;
 	float clientWidth = desktopWidth * maxClientFractionOfDesktop;
 	float clientHeight = desktopHeight * maxClientFractionOfDesktop;
-	if( clientAspect > desktopAspect )
+	if (clientAspect > desktopAspect)
 	{
+
 		// Client window has a wider aspect than desktop; shrink client height to match its width
 		clientHeight = clientWidth / clientAspect;
 	}
@@ -177,10 +213,10 @@ void CreateOSWindow( void* applicationInstanceHandle, float clientAspect )
 
 	// Calculate the outer dimensions of the physical window, including frame et. al.
 	RECT windowRect = clientRect;
-	AdjustWindowRectEx( &windowRect, windowStyleFlags, FALSE, windowStyleExFlags );
+	AdjustWindowRectEx(&windowRect, windowStyleFlags, FALSE, windowStyleExFlags);
 
 	WCHAR windowTitle[1024];
-	MultiByteToWideChar( GetACP(), 0, APP_NAME, -1, windowTitle, sizeof( windowTitle ) / sizeof( windowTitle[0] ) );
+	MultiByteToWideChar(GetACP(), 0, APP_NAME, -1, windowTitle, sizeof(windowTitle) / sizeof(windowTitle[0]));
 	g_hWnd = CreateWindowEx(
 		windowStyleExFlags,
 		windowClassDescription.lpszClassName,
@@ -192,17 +228,17 @@ void CreateOSWindow( void* applicationInstanceHandle, float clientAspect )
 		windowRect.bottom - windowRect.top,
 		NULL,
 		NULL,
-		(HINSTANCE) applicationInstanceHandle,
-		NULL );
+		(HINSTANCE)applicationInstanceHandle,
+		NULL);
 
-	ShowWindow( g_hWnd, SW_SHOW );
-	SetForegroundWindow( g_hWnd );
-	SetFocus( g_hWnd );
+	ShowWindow(g_hWnd, SW_SHOW);
+	SetForegroundWindow(g_hWnd);
+	SetFocus(g_hWnd);
 
-	g_displayDeviceContext = GetDC( g_hWnd );
+	g_displayDeviceContext = GetDC(g_hWnd);
 
-	HCURSOR cursor = LoadCursor( NULL, IDC_ARROW );
-	SetCursor( cursor );
+	HCURSOR cursor = LoadCursor(NULL, IDC_ARROW);
+	SetCursor(cursor);
 }
 
 
@@ -215,8 +251,8 @@ void CreateRenderingContext()
 {
 	// Creates an OpenGL rendering context (RC) and binds it to the current window's device context (DC)
 	PIXELFORMATDESCRIPTOR pixelFormatDescriptor;
-	memset( &pixelFormatDescriptor, 0, sizeof( pixelFormatDescriptor ) );
-	pixelFormatDescriptor.nSize = sizeof( pixelFormatDescriptor );
+	memset(&pixelFormatDescriptor, 0, sizeof(pixelFormatDescriptor));
+	pixelFormatDescriptor.nSize = sizeof(pixelFormatDescriptor);
 	pixelFormatDescriptor.nVersion = 1;
 	pixelFormatDescriptor.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
 	pixelFormatDescriptor.iPixelType = PFD_TYPE_RGBA;
@@ -226,16 +262,15 @@ void CreateRenderingContext()
 	pixelFormatDescriptor.cStencilBits = 8;
 
 	// These two OpenGL-like functions (wglCreateContext and wglMakeCurrent) will remain here for now.
-	int pixelFormatCode = ChoosePixelFormat( g_displayDeviceContext, &pixelFormatDescriptor );
-	SetPixelFormat( g_displayDeviceContext, pixelFormatCode, &pixelFormatDescriptor );
-	g_openGLRenderingContext = wglCreateContext( g_displayDeviceContext );
-	wglMakeCurrent( g_displayDeviceContext, g_openGLRenderingContext );
+	int pixelFormatCode = ChoosePixelFormat(g_displayDeviceContext, &pixelFormatDescriptor);
+	SetPixelFormat(g_displayDeviceContext, pixelFormatCode, &pixelFormatDescriptor);
+	g_openGLRenderingContext = wglCreateContext(g_displayDeviceContext);
+	wglMakeCurrent(g_displayDeviceContext, g_openGLRenderingContext);
 
 	// #SD1ToDo: move all OpenGL functions (including those below) to Renderer.cpp (only!)
-	glEnable( GL_BLEND );
-	glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
-
 
 
 //-----------------------------------------------------------------------------------------------
@@ -248,16 +283,16 @@ void CreateRenderingContext()
 void RunMessagePump()
 {
 	MSG queuedMessage;
-	for( ;; )
+	for (;; )
 	{
-		BOOL const wasMessagePresent = PeekMessage( &queuedMessage, NULL, 0, 0, PM_REMOVE );
-		if( !wasMessagePresent )
+		BOOL const wasMessagePresent = PeekMessage(&queuedMessage, NULL, 0, 0, PM_REMOVE);
+		if (!wasMessagePresent)
 		{
 			break;
 		}
 
-		TranslateMessage( &queuedMessage );
-		DispatchMessage( &queuedMessage ); // This tells Windows to call our "WindowsMessageHandlingProcedure" (a.k.a. "WinProc") function
+		TranslateMessage(&queuedMessage);
+		DispatchMessage(&queuedMessage); // This tells Windows to call our "WindowsMessageHandlingProcedure" (a.k.a. "WinProc") function
 	}
 }
 
@@ -265,11 +300,15 @@ void RunMessagePump()
 //-----------------------------------------------------------------------------------------------
 // #SD1ToDo: Move this function to Game/App.cpp and rename it to the App::App() constructor function
 //
-void App_Constructor( void* applicationInstanceHandle, char const* commandLineString )
+void App_Constructor(void* applicationInstanceHandle, char const* commandLineString)
 {
-	UNUSED( commandLineString );
-	CreateOSWindow( applicationInstanceHandle, CLIENT_ASPECT );	// #SD1ToDo: this will eventually move to Window.cpp
+	UNUSED(commandLineString);
+	CreateOSWindow(applicationInstanceHandle, CLIENT_ASPECT);	// #SD1ToDo: this will eventually move to Window.cpp
 	CreateRenderingContext();									// #SD1ToDo: this will move to Renderer.cpp, called by Renderer::Startup
+
+	g_ship1 = new PlayerShip(Vec2(0.f, 30.f), Vec2(12.f, 0.f));
+	g_ship2 = new PlayerShip(Vec2(0.f, 50.f), Vec2(20.f, 0.f));
+	g_ship3 = new PlayerShip(Vec2(0.f, 70.f), Vec2(15.f, 0.f));
 }
 
 
@@ -278,14 +317,32 @@ void App_Constructor( void* applicationInstanceHandle, char const* commandLineSt
 //
 void App_Destructor()
 {
+	delete g_ship1;
+	delete g_ship2;
+	delete g_ship3;
+
+	g_ship1 = nullptr;
+	g_ship2 = nullptr;
+	g_ship3 = nullptr;
 }
 
 
 //-----------------------------------------------------------------------------------------------
 // #SD1ToDo: This will become  App::Update( float deltaSeconds )
-void App_Update()
+void App_Update(float deltaSeconds)
 {
+	if (isSlowMode) {
+		deltaSeconds /= 10.f;
+	}
 
+	if (isPause)
+	{
+		deltaSeconds = 0.f;
+	}
+
+	g_ship1->Update(deltaSeconds);
+	g_ship2->Update(deltaSeconds);
+	g_ship3->Update(deltaSeconds);
 }
 
 
@@ -305,81 +362,78 @@ void App_Render()
 	// Establish a 2D (orthographic) drawing coordinate system: (0,0) bottom-left to (10,10) top-right
 	// #SD1ToDo: This will be replaced by a call to g_renderer->BeginView( m_worldView ); or similar
 	glLoadIdentity();
-	glOrtho( 0.f, 200.f, 0.f, 100.f, 0.f, 1.f ); // arguments are: xLeft, xRight, yBottom, yTop, zNear, zFar
+
+	/* 2:1 aspect window  */
+	glOrtho(0.f, 200.f, 0.f, 100.f, 0.f, 1.f); // arguments are: xLeft, xRight, yBottom, yTop, zNear, zFar
 
 	// Clear all screen (backbuffer) pixels to medium-blue
 	// #SD1ToDo: This will become g_renderer->ClearColor( Rgba8( 0, 0, 127, 255 ) );
-	glClearColor( 0.f, 0.f, 0.5f, 1.f ); // Note; glClearColor takes colors as floats in [0,1], not bytes in [0,255]
-	glClear( GL_COLOR_BUFFER_BIT ); // ALWAYS clear the screen at the top of each frame's Render()!
+
+	/* dark orange   */
+	ClearColor(100.f, 50.f, 0.f, 1.f);
+
+	glClear(GL_COLOR_BUFFER_BIT); // ALWAYS clear the screen at the top of each frame's Render()!
 
 	// Draw some triangles (provide 3 vertexes each)
 	// #SD1ToDo: Move all OpenGL code into Renderer.cpp (only); call g_renderer->DrawVertexArray() instead
-	glBegin( GL_TRIANGLES );
+	glBegin(GL_TRIANGLES);
 	{
-		// First triangle (3 vertexes, each preceded by a color)
-		glColor4ub( 255, 0, 0, 255 );
-		glTexCoord2f( 0.f, 0.f );
-		glVertex2f( 1.f, 1.f );
-
-		glColor4ub( 0, 255, 0, 255 );
-		glTexCoord2f( 0.f, 0.f );
-		glVertex2f( 8.f, 2.f );
-
-		glColor4ub( 255, 255, 255, 255 );
-		glTexCoord2f( 0.f, 0.f );
-		glVertex2f( 3.f, 8.f );
-
-		// Second triangle (3 vertexes, each preceded by a color)
-		glColor4ub( 100, 0, 0, 255 );
-		glTexCoord2f( 0.f, 0.f );
-		glVertex2f( 3.f, 5.f );
-
-		glColor4ub( 100, 0, 0, 255 );
-		glTexCoord2f( 0.f, 0.f );
-		glVertex2f( 5.f, 3.f );
-
-		glColor4ub( 100, 0, 0, 255 );
-		glTexCoord2f( 0.f, 0.f );
-		glVertex2f( 6.f, 7.f );
+		g_ship1->Render();
+		g_ship2->Render();
+		g_ship3->Render();
 	}
 	glEnd();
 
-	// DrawVertexArray(3, startshiparray);
+	// DrawVertexArray(3, vertexArray);
 }
-
 
 //-----------------------------------------------------------------------------------------------
 // #SD1ToDo: This will become  App::Run()
 void App_Run()
 {
 	// Program main loop; keep running frames until it's time to quit
-	while( !g_isQuitting )			// #SD1ToDo: ...becomes:  !g_theApp->IsQuitting()
+	while (!g_isQuitting)			// #SD1ToDo: ...becomes:  !g_theApp->IsQuitting()
 	{
 		// #SD1ToDo: This call will move to Window::BeginFrame() once we have a Window engine system
 		// Process OS messages (keyboard/mouse button clicked, application lost/gained focus, etc.)
 		RunMessagePump(); // calls our own WindowsMessageHandlingProcedure() function for us!
 
+		float fakeDeltaSecond = 1.f / 60.f;
+
 		// One "frame" of the game.  Generally: Input, Update, Render.  We call this 60+ times per second.
 		// g_engine->BeginFrame(); // Allow engine subsystems to do pre-frame stuff
-		App_Update();		// #SD1ToDo: ...becomes just Update();		once this function becomes App::Run()
+
+
+		if (!isPause)
+		{
+			App_Update(fakeDeltaSecond);		// #SD1ToDo: ...becomes just Update();		once this function becomes App::Run()
+		}
+
 		App_Render();		// #SD1ToDo: ...becomes just Render();		once this function becomes App::Run()
 		// g_engine->EndFrame(); // Allow engine subsystems to do post-frame stuff
 
-		Sleep( 16 ); // Temporary code to "slow down" our app to ~60Hz until we have proper frame timing in
+		Sleep(16); // Temporary code to "slow down" our app to ~60Hz until we have proper frame timing in
 
 		// #SD1ToDo: This call will move to Renderer::EndFrame() once we complete our Window refactor
 		// "Present" the backbuffer by swapping the front (visible) and back (working) screen buffers
-		SwapBuffers( g_displayDeviceContext ); // Note: call this only once at the very end of each frame
+		SwapBuffers(g_displayDeviceContext); // Note: call this only once at the very end of each frame
+
+
+		if (isSingleStep)
+		{
+			isPause = true;
+			isSingleStep = false;
+		}
 	}
 }
 
 
 //-----------------------------------------------------------------------------------------------
-int WINAPI WinMain( HINSTANCE applicationInstanceHandle, HINSTANCE, LPSTR commandLineString, int )
+int WINAPI WinMain(HINSTANCE applicationInstanceHandle, HINSTANCE, LPSTR commandLineString, int)
 {
-	UNUSED( commandLineString );
+	UNUSED(commandLineString);
 
-	App_Constructor( applicationInstanceHandle, commandLineString ); // This will get replaced with:
+	App_Constructor(applicationInstanceHandle, commandLineString); // This will get replaced with:
 	// #SD1ToDo: g_theApp = new App();
 
 	App_Run(); // This will get replaced with:

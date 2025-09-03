@@ -8,10 +8,21 @@
     <Filter Include="Gameplay">
       <UniqueIdentifier>{81db0ab2-7785-49ef-8ee5-0c64d02bf090}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{35c65b05-3893-4fd7-a418-1fa1664e4c45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main_Windows.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerShip.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PlayerShip.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
