@@ -1,24 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\",
+  "WorkspaceRootPath": "C:\\Users\\Yang Shi\\Desktop\\SMU\\SD\\MathUnitTests\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\p4\\Personal\\SD\\Starship\\Code\\Game\\PlayerShip.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\Users\\Yang Shi\\Desktop\\SD\\Engine\\Code\\Engine\\Math\\Vec2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\Users\\Yang Shi\\Desktop\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\UnitTests_MP1A01.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\UnitTests_MP1A01.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Yang Shi\\Desktop\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,69 +16,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Vec2.cpp",
               "DocumentMoniker": "C:\\Users\\Yang Shi\\Desktop\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
-              "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
               "ToolTip": "C:\\Users\\Yang Shi\\Desktop\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
-              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
+              "RelativeToolTip": "..\\..\\..\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-26T22:45:49.897Z",
               "IsPinned": true
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UnitTests_MP1A01.hpp",
-              "DocumentMoniker": "C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.hpp",
-              "RelativeDocumentMoniker": "Code\\Game\\UnitTests_MP1A01.hpp",
-              "ToolTip": "C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.hpp",
-              "RelativeToolTip": "Code\\Game\\UnitTests_MP1A01.hpp",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-26T23:06:29.428Z"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UnitTests_MP1A01.cpp",
-              "DocumentMoniker": "C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.cpp",
-              "RelativeDocumentMoniker": "Code\\Game\\UnitTests_MP1A01.cpp",
-              "ToolTip": "C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.cpp",
-              "RelativeToolTip": "Code\\Game\\UnitTests_MP1A01.cpp",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-26T22:57:02.655Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Vec2.hpp",
-              "DocumentMoniker": "C:\\Users\\Yang Shi\\Desktop\\SD\\Engine\\Code\\Engine\\Math\\Vec2.hpp",
-              "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\Vec2.hpp",
-              "ToolTip": "C:\\Users\\Yang Shi\\Desktop\\SD\\Engine\\Code\\Engine\\Math\\Vec2.hpp",
-              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\Vec2.hpp",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-26T22:48:52.262Z"
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Main.cpp",
-              "DocumentMoniker": "C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\Main.cpp",
-              "RelativeDocumentMoniker": "Code\\Game\\Main.cpp",
-              "ToolTip": "C:\\Users\\Yang Shi\\Desktop\\SD\\MathUnitTests\\Code\\Game\\Main.cpp",
-              "RelativeToolTip": "Code\\Game\\Main.cpp",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGcAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-26T22:06:19.982Z",
-              "EditorCaption": ""
+              "Title": "PlayerShip.hpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\Starship\\Code\\Game\\PlayerShip.hpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\p4\\Personal\\SD\\Starship\\Code\\Game\\PlayerShip.hpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Starship\\Code\\Game\\PlayerShip.hpp [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\p4\\Personal\\SD\\Starship\\Code\\Game\\PlayerShip.hpp [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-03T21:40:27.511Z",
+              "EditorCaption": " [Read Only]"
             }
           ]
         }

@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\Main_Windows.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\PROGRAM FILES (X86)\\WINDOWS KITS\\10\\INCLUDE\\10.0.26100.0\\UM\\WINUSER.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\Users\\Yang Shi\\Desktop\\SMU\\SD\\Starship\\Code\\Game\\PlayerShip.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\PlayerShip.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\PROGRAM FILES (X86)\\WINDOWS KITS\\10\\INCLUDE\\10.0.26100.0\\UM\\WINUSER.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,7 +33,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "WinUser.h",
               "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um\\WinUser.h",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um\\WinUser.h",
@@ -49,22 +49,22 @@
               "Title": "Main_Windows.cpp",
               "DocumentMoniker": "C:\\Users\\Yang Shi\\Desktop\\SMU\\SD\\Starship\\Code\\Game\\Main_Windows.cpp",
               "RelativeDocumentMoniker": "Code\\Game\\Main_Windows.cpp",
-              "ToolTip": "C:\\Users\\Yang Shi\\Desktop\\SMU\\SD\\Starship\\Code\\Game\\Main_Windows.cpp",
-              "RelativeToolTip": "Code\\Game\\Main_Windows.cpp",
-              "ViewState": "AgIAAIEBAAAAAAAAAAAowJMBAAAgAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Yang Shi\\Desktop\\SMU\\SD\\Starship\\Code\\Game\\Main_Windows.cpp [Read Only]",
+              "RelativeToolTip": "Code\\Game\\Main_Windows.cpp [Read Only]",
+              "ViewState": "AgIAAAkAAAAAAAAAAIAywJAAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-02T23:01:02.262Z",
-              "EditorCaption": ""
+              "EditorCaption": " [Read Only]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "PlayerShip.cpp",
               "DocumentMoniker": "C:\\Users\\Yang Shi\\Desktop\\SMU\\SD\\Starship\\Code\\Game\\PlayerShip.cpp",
               "RelativeDocumentMoniker": "Code\\Game\\PlayerShip.cpp",
               "ToolTip": "C:\\Users\\Yang Shi\\Desktop\\SMU\\SD\\Starship\\Code\\Game\\PlayerShip.cpp",
               "RelativeToolTip": "Code\\Game\\PlayerShip.cpp",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABUAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-02T04:16:13.152Z"
             }

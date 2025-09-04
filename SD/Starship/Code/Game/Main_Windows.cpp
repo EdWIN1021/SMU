@@ -25,9 +25,9 @@ PlayerShip* g_ship1 = nullptr;
 PlayerShip* g_ship2 = nullptr;
 PlayerShip* g_ship3 = nullptr;
 
-bool isSlowMode = false;
-bool isPause = false;
-bool isSingleStep = false;
+bool g_isSlowMode = false;
+bool g_isPause = false;
+bool g_isSingleStep = false;
 
 //-----------------------------------------------------------------------------------------------
 // #SD1ToDo: This will eventually go away once we add a Window engine class later on.
@@ -77,7 +77,7 @@ void ClearColor(float r, float g, float b, float a)
 
 void TogglePause()
 {
-	isPause = !isPause;
+	g_isPause = !g_isPause;
 }
 
 
@@ -111,7 +111,7 @@ LRESULT CALLBACK WindowsMessageHandlingProcedure(HWND windowHandle, UINT wmMessa
 
 		if (asKey == 'T')
 		{
-			isSlowMode = true;
+			g_isSlowMode = true;
 		}
 
 		if (asKey == 'P')
@@ -122,8 +122,8 @@ LRESULT CALLBACK WindowsMessageHandlingProcedure(HWND windowHandle, UINT wmMessa
 
 		if (asKey == 'O')
 		{
-			isSingleStep = true;
-			isPause = false;
+			g_isSingleStep = true;
+			g_isPause = false;
 		}
 
 		if (asKey == 'Q')
@@ -142,7 +142,7 @@ LRESULT CALLBACK WindowsMessageHandlingProcedure(HWND windowHandle, UINT wmMessa
 
 		if (asKey == 'T')
 		{
-			isSlowMode = false;
+			g_isSlowMode = false;
 		}
 
 		// #SD1ToDo: Tell the App (or InputSystem later) about this key-released event...
@@ -331,11 +331,11 @@ void App_Destructor()
 // #SD1ToDo: This will become  App::Update( float deltaSeconds )
 void App_Update(float deltaSeconds)
 {
-	if (isSlowMode) {
+	if (g_isSlowMode) {
 		deltaSeconds /= 10.f;
 	}
 
-	if (isPause)
+	if (g_isPause)
 	{
 		deltaSeconds = 0.f;
 	}
@@ -343,6 +343,11 @@ void App_Update(float deltaSeconds)
 	g_ship1->Update(deltaSeconds);
 	g_ship2->Update(deltaSeconds);
 	g_ship3->Update(deltaSeconds);
+
+	if (g_ship1->m_position.x >= 200 || g_ship2->m_position.x >= 200 || g_ship3->m_position.x >= 200)
+	{
+		g_isQuitting = true;
+	}
 }
 
 
@@ -404,7 +409,7 @@ void App_Run()
 		// g_engine->BeginFrame(); // Allow engine subsystems to do pre-frame stuff
 
 
-		if (!isPause)
+		if (!g_isPause)
 		{
 			App_Update(fakeDeltaSecond);		// #SD1ToDo: ...becomes just Update();		once this function becomes App::Run()
 		}
@@ -419,10 +424,10 @@ void App_Run()
 		SwapBuffers(g_displayDeviceContext); // Note: call this only once at the very end of each frame
 
 
-		if (isSingleStep)
+		if (g_isSingleStep)
 		{
-			isPause = true;
-			isSingleStep = false;
+			g_isPause = true;
+			g_isSingleStep = false;
 		}
 	}
 }

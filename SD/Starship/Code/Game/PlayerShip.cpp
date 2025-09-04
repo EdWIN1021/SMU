@@ -11,11 +11,12 @@ PlayerShip::PlayerShip(Vec2 const& startingPosition, Vec2 const& startingVelocit
 {
 }
 
+
 void PlayerShip::Update(float deltaSeconds)
 {
 	m_position.x += m_velocity.x * deltaSeconds;
-	if (m_position.x >= 200) { exit(0); }
 }
+
 
 void PlayerShip::Render()
 {
