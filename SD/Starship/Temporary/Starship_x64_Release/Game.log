@@ -1,11 +1,8 @@
-﻿  Main_Windows.cpp
-  PlayerShip.cpp
-  Generating code
-  26 of 26 functions (100.0%) were compiled.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+﻿  Generating code
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 27 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
-  Game.vcxproj -> C:\Users\Yang Shi\Desktop\SMU\SD\Starship\Temporary\Starship_x64_Release\Starship_Release_x64.exe
-  Copying Starship_Release_x64.exe to C:\Users\Yang Shi\Desktop\SMU\SD\Starship\Run...
-  C:\Users\Yang Shi\Desktop\SMU\SD\Starship\Temporary\Starship_x64_Release\Starship_Release_x64.exe -> C:\Users\Yang Shi\Desktop\SMU\SD\Starship\Run\Starship_Release_x64.exe
+  Game.vcxproj -> C:\p4\Personal\SD\Starship\Temporary\Starship_x64_Release\Starship_Release_x64.exe
+  Copying Starship_Release_x64.exe to C:\p4\Personal\SD\Starship\Run...
+  C:\p4\Personal\SD\Starship\Temporary\Starship_x64_Release\Starship_Release_x64.exe -> C:\p4\Personal\SD\Starship\Run\Starship_Release_x64.exe
   1 File(s) copied

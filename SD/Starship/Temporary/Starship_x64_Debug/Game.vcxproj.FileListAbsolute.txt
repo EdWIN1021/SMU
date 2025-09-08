@@ -1,2 +1,3 @@
 C:\Users\Yang Shi\Desktop\SD\Starship\Temporary\Starship_x64_Debug\Starship_Debug_x64.exe
 C:\p4\Personal\SD\Starship\Temporary\Starship_x64_Debug\Starship_Debug_x64.exe
+C:\Users\Yang Shi\Desktop\SMU\SD\Starship\Temporary\Starship_x64_Debug\Starship_Debug_x64.exe
