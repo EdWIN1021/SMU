@@ -20,7 +20,5 @@ typedef int (TestSetFunctionType)(); // Function signature type for all test fun
 //-----------------------------------------------------------------------------------------------
 // Functions provided by Main.cpp, but globally accessible to all test files
 //
-void RunTestSet( bool isGraded, TestSetFunctionType testSetFunction, char const* testSetName );
-void VerifyTestResult( bool isCorrect, char const* testName );
-
-
+void RunTestSet(bool isGraded, TestSetFunctionType testSetFunction, char const* testSetName);
+void VerifyTestResult(bool isCorrect, char const* testName);

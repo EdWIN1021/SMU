@@ -1,0 +1,9 @@
+﻿  Rgba8.cpp
+  Vertex.cpp
+  MathUtils.cpp
+  RandomNumberGenerator.cpp
+  Vec2.cpp
+  Vec3.cpp
+  Camera.cpp
+C:\p4\Personal\SD\Engine\Code\Engine\Math\Vec3.cpp(145,40): warning C4100: 'vecToMultiply': unreferenced parameter
+  Engine.vcxproj -> C:\p4\Personal\SD\MathUnitTests\x64\Release\Engine.lib

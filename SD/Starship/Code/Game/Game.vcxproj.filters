@@ -8,10 +8,69 @@
     <Filter Include="Gameplay">
       <UniqueIdentifier>{81db0ab2-7785-49ef-8ee5-0c64d02bf090}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{35c65b05-3893-4fd7-a418-1fa1664e4c45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity">
+      <UniqueIdentifier>{f575957c-94bf-4dc9-bd85-04315896d2c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\PlayerShip">
+      <UniqueIdentifier>{fb5fec8e-f585-4a14-bbb4-c0e4e25f2996}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Bullet">
+      <UniqueIdentifier>{fd0c8d22-0451-4d95-9cf6-b97d086445c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Asteroid">
+      <UniqueIdentifier>{38b058c1-bd78-4483-b915-c9021cb2d4b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\App">
+      <UniqueIdentifier>{92168d87-20cc-4986-a62c-493d99d675a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main_Windows.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Game\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Game\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Asteroid.cpp">
+      <Filter>Game\Asteroid</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Game\App</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCommon.hpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerShip.cpp">
+      <Filter>Game\PlayerShip</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Entity.hpp">
+      <Filter>Game\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.hpp">
+      <Filter>Game\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroid.hpp">
+      <Filter>Game\Asteroid</Filter>
+    </ClInclude>
+    <ClInclude Include="App.hpp">
+      <Filter>Game\App</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShip.hpp">
+      <Filter>Game\PlayerShip</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
