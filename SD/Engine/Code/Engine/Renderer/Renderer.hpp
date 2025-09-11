@@ -6,14 +6,12 @@ struct Rgba8;
 class Camera;
 struct Vertex;
 
-extern HDC g_displayDeviceContext;
-
-
 class Renderer
 {
 public:
 	Renderer();
 	~Renderer();
+
 	void Startup();
 	void BeginFrame();
 	void EndFrame();
@@ -23,5 +21,6 @@ public:
 	void ClearScreen(Rgba8 const& clearColor);
 	void BeginCamera(Camera const& camera);
 	void EndCamera(Camera const& camera);
+
 	void DrawVertexArray(int numVertexes, Vertex const* vertexes);
 };

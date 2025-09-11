@@ -1,4 +1,3 @@
-﻿  Renderer.cpp
-C:\p4\Personal\SD\Engine\Code\Engine\Renderer\Renderer.cpp(85,40): warning C4100: 'camera': unreferenced parameter
+﻿  ErrorWarningAssert.cpp
 x64\Debug\VertexUtils.obj : warning LNK4042: object specified more than once; extras ignored
   Engine.vcxproj -> C:\p4\Personal\SD\Starship\x64\Debug\Engine.lib

@@ -1,7 +1,13 @@
+C:\p4\Personal\SD\Engine\Code\Engine\Core\Engine.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\Engine.obj
+C:\p4\Personal\SD\Engine\Code\Engine\Core\ErrorWarningAssert.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\ErrorWarningAssert.obj
 C:\p4\Personal\SD\Engine\Code\Engine\Core\Rgba8.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\Rgba8.obj
+C:\p4\Personal\SD\Engine\Code\Engine\Core\StringUtils.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\StringUtils.obj
 C:\p4\Personal\SD\Engine\Code\Engine\Core\Vertex.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\Vertex.obj
+C:\p4\Personal\SD\Engine\Code\Engine\Core\VertexUtils.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\VertexUtils.obj
+C:\p4\Personal\SD\Engine\Code\Engine\Core\VertexUtils.hpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\VertexUtils.obj
 C:\p4\Personal\SD\Engine\Code\Engine\Math\MathUtils.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\MathUtils.obj
 C:\p4\Personal\SD\Engine\Code\Engine\Math\RandomNumberGenerator.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\RandomNumberGenerator.obj
 C:\p4\Personal\SD\Engine\Code\Engine\Math\Vec2.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\Vec2.obj
 C:\p4\Personal\SD\Engine\Code\Engine\Math\Vec3.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\Vec3.obj
 C:\p4\Personal\SD\Engine\Code\Engine\Renderer\Camera.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\Camera.obj
+C:\p4\Personal\SD\Engine\Code\Engine\Renderer\Renderer.cpp;C:\p4\Personal\SD\Engine\Code\Engine\x64\Release\Renderer.obj

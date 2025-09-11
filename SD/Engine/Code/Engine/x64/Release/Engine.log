@@ -1,9 +1,16 @@
-﻿  Rgba8.cpp
+﻿  Engine.cpp
+  ErrorWarningAssert.cpp
+  Rgba8.cpp
+  StringUtils.cpp
   Vertex.cpp
+  VertexUtils.cpp
+  VertexUtils.hpp
   MathUtils.cpp
   RandomNumberGenerator.cpp
   Vec2.cpp
   Vec3.cpp
   Camera.cpp
-C:\p4\Personal\SD\Engine\Code\Engine\Math\Vec3.cpp(145,40): warning C4100: 'vecToMultiply': unreferenced parameter
-  Engine.vcxproj -> C:\p4\Personal\SD\MathUnitTests\x64\Release\Engine.lib
+  Renderer.cpp
+C:\p4\Personal\SD\Engine\Code\Engine\Renderer\Renderer.cpp(86,40): warning C4100: 'camera': unreferenced parameter
+x64\Release\VertexUtils.obj : warning LNK4042: object specified more than once; extras ignored
+  Engine.vcxproj -> C:\p4\Personal\SD\Starship\x64\Release\Engine.lib

@@ -4,8 +4,6 @@
 #include <cmath>
 
 
-
-
 /* radians = degrees * (PI / 180) */
 float ConvertDegreesToRadians(float degrees)
 {

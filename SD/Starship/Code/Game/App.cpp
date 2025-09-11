@@ -1,10 +1,11 @@
-#include "App.hpp"
+/*Engine*/
 #include "Engine/Core/Engine.hpp"
-#include "Game.hpp"
-#include <Engine/Renderer/Renderer.cpp>
+#include "Engine/Renderer/Renderer.hpp"
 #include "Engine/Renderer/Camera.hpp"
-#include "PlayerShip.hpp"
 
+#include "App.hpp"
+#include "Game.hpp"
+#include "Bullet.hpp"
 
 App* g_app = nullptr;
 
@@ -13,8 +14,8 @@ App::App()
 {
 	g_engine = new Engine();
 	m_game = new Game();
-	m_gameCamera = new Camera(Vec2(0, 0), Vec2(WORLD_SIZE_X, WORLD_SIZE_Y));
 }
+
 
 App::~App()
 {
@@ -23,52 +24,82 @@ App::~App()
 
 	delete g_engine;
 	g_engine = nullptr;
-
-	delete m_gameCamera;
-	m_gameCamera = nullptr;
 }
+
 
 void App::RunFrame()
 {
 	float fakeDeltaSecond = 1.f / 60.f;
-
 	Update(fakeDeltaSecond);
 	Render();
 }
 
+
 void App::Update(float deltaSeconds)
 {
-	m_game->m_playerShip->Update(deltaSeconds);
+	m_game->Update(deltaSeconds);
+	UpdateLastFrameKeys();
 }
+
 
 void App::Render() const
 {
-	g_engine->m_render->BeginCamera(*m_gameCamera);
 	g_engine->m_render->ClearScreen(Rgba8(0, 0, 0));
-	m_game->m_playerShip->Render();
+	m_game->Render();
 }
+
 
 void App::SetIsQuitting()
 {
 	m_isQuitting = true;
 }
 
-bool App::IsKeyDown(unsigned char keyCode)
-{
-	return currentlyDown[keyCode];
-}
 
 bool App::IsQuitting()
 {
 	return m_isQuitting;
 }
 
+
 void App::OnKeyDown(unsigned char keyCode)
 {
-	currentlyDown[keyCode] = true;
+	m_isKeyDownArray[keyCode] = true;
 }
+
 
 void App::OnKeyUp(unsigned char keyCode)
 {
-	currentlyDown[keyCode] = false;
+	m_isKeyDownArray[keyCode] = false;
 }
+
+bool App::IsKeyDown(unsigned char keyCode)
+{
+	return m_isKeyDownArray[keyCode];
+}
+
+
+bool App::WasKeyJustPressed(unsigned char keyCode)
+{
+	return m_isKeyDownArray[keyCode] && !m_wasKeydowPrevArray[keyCode];
+}
+
+
+bool App::WasKeyJustReleased(unsigned char keyCode)
+{
+	return !m_isKeyDownArray[keyCode] && m_wasKeydowPrevArray[keyCode];
+}
+
+
+bool App::IsKeyHeld(unsigned char keyCode)
+{
+	return m_isKeyDownArray[keyCode] && m_wasKeydowPrevArray[keyCode];
+}
+
+void App::UpdateLastFrameKeys()
+{
+	for( int i = 0; i < 256; ++ i )
+	{
+		m_wasKeydowPrevArray[i] = m_isKeyDownArray[i];
+	}
+}
+

@@ -8,7 +8,6 @@
 #include "../Core/Vertex.hpp"
 
 HGLRC g_openGLRenderingContext = nullptr;
-HDC g_displayDeviceContext = nullptr;
 
 
 Renderer::Renderer()
@@ -47,11 +46,13 @@ void Renderer::CreateRenderingContext()
 	pixelFormatDescriptor.cAccumBits = 0;
 	pixelFormatDescriptor.cStencilBits = 8;
 
-	// These two OpenGL-like functions (wglCreateContext and wglMakeCurrent) will remain here for now.
-	int pixelFormatCode = ChoosePixelFormat(g_displayDeviceContext, &pixelFormatDescriptor);
-	SetPixelFormat(g_displayDeviceContext, pixelFormatCode, &pixelFormatDescriptor);
-	g_openGLRenderingContext = wglCreateContext(g_displayDeviceContext);
-	wglMakeCurrent(g_displayDeviceContext, g_openGLRenderingContext);
+	HWND windowHandle = ::GetActiveWindow();
+	HDC  displayDeviceContext = GetDC( windowHandle );
+
+	int pixelFormatCode = ChoosePixelFormat(displayDeviceContext, &pixelFormatDescriptor);
+	SetPixelFormat(displayDeviceContext, pixelFormatCode, &pixelFormatDescriptor);
+	g_openGLRenderingContext = wglCreateContext(displayDeviceContext);
+	wglMakeCurrent(displayDeviceContext, g_openGLRenderingContext);
 
 	// #SD1ToDo: move all OpenGL functions (including those below) to Renderer.cpp (only!)
 	glEnable(GL_BLEND);
@@ -61,7 +62,7 @@ void Renderer::CreateRenderingContext()
 
 void Renderer::ClearScreen(Rgba8 const& clearColor)
 {
-	glClearColor(clearColor.r / RGB_SCALE, clearColor.g / RGB_SCALE, clearColor.b / RGB_SCALE, clearColor.a);
+	glClearColor(clearColor.r / 255.f, clearColor.g / 255.f, clearColor.b / 255.f, clearColor.a);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 

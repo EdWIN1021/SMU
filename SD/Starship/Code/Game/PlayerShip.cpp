@@ -1,12 +1,22 @@
+/* OpenGl */
 #include <windows.h>
 #include <gl/gl.h>		
-#include "PlayerShip.hpp"			
-#include <Engine/Core/Vertex.hpp>
+
+/* Engine */
+#include "Engine/Core/Vertex.hpp"
 #include "Engine/Math/Vec3.hpp"
-#include "GameCommon.hpp"
-#include <Engine/Core/VertexUtils.hpp>
-#include <Engine/Core/Engine.cpp>
+#include "Engine/Core/VertexUtils.hpp"
+#include "Engine/Core/Engine.cpp"
+#include "Engine/Core/Rgba8.hpp"
+
+#include "PlayerShip.hpp"			
+#include "Bullet.hpp"
+
 #include "App.hpp"
+#include "Game/Game.hpp"
+#include "GameCommon.hpp"
+#include <Engine/Core/ErrorWarningAssert.hpp>
+#include <Engine/Core/StringUtils.hpp>
 
 
 PlayerShip::PlayerShip(Game* owner, Vec2 const& startPos)
@@ -20,16 +30,16 @@ PlayerShip::PlayerShip(Game* owner, Vec2 const& startPos)
 
 PlayerShip::~PlayerShip()
 {
-
+	
 }
 
 
 void PlayerShip::Update(float deltaSeconds)
 {
 	UpdateFromKeyboard(deltaSeconds);
+	m_position += m_velocity * deltaSeconds;
 
-	m_position.x += m_velocity.x * deltaSeconds;
-	m_position.y += m_velocity.y * deltaSeconds;
+	BounceOffWalls();
 }
 
 
@@ -46,11 +56,6 @@ void PlayerShip::Render() const
 
 	TransformVertexArrayXY3D(NUM_SHIP_VERTS, tempShipWorldVerts, 1.f, m_orientationDegrees, m_position);
 	g_engine->m_render->DrawVertexArray(NUM_SHIP_VERTS, tempShipWorldVerts);
-}
-
-
-void PlayerShip::DebugRender() const
-{
 }
 
 
@@ -89,25 +94,64 @@ void PlayerShip::InitializeLocalVerts()
 
 void PlayerShip::UpdateFromKeyboard(float deltaSeconds)
 {
-	if(m_isDead)
+	if (g_app->WasKeyJustPressed('N') && m_isDead)
+	{
+		Respawn();
+	}
+
+	if (m_isDead)
 		return;
 
 	if(g_app->IsKeyDown('E'))
 	{
 		Vec2 forwardVector = GetForwardNormal();
-		m_velocity.x += forwardVector.x * PLAYER_SHIP_ACCELERATION * deltaSeconds;
-		m_velocity.y += forwardVector.y * PLAYER_SHIP_ACCELERATION * deltaSeconds;
+		m_velocity += forwardVector * PLAYER_SHIP_ACCELERATION * deltaSeconds;
 	}
-	else if(g_app->IsKeyDown('S'))
+	
+	if(g_app->IsKeyDown('S') && !g_app->IsKeyDown('F'))
 	{
 		m_orientationDegrees += PLAYER_SHIP_TURN_SPEED * deltaSeconds;
 	}
-	else if (g_app->IsKeyDown('F'))
+	
+	if (g_app->IsKeyDown('F') && !g_app->IsKeyDown('S'))
 	{
 		m_orientationDegrees -= PLAYER_SHIP_TURN_SPEED * deltaSeconds;
 	}
-	else {
-		m_velocity.x = 0.f;
-		m_velocity.y = 0.f;
+	
+	if (g_app->WasKeyJustPressed(VK_SPACE))
+	{
+		if(m_game->m_bulletSize < MAX_BULLETS)
+		{
+			m_game->m_bullets[m_game->m_bulletSize] = new Bullet( m_game, m_position + GetForwardNormal());
+			m_game->m_bullets[m_game->m_bulletSize]->m_orientationDegrees = m_orientationDegrees;
+			m_game->m_bullets[m_game->m_bulletSize]->m_velocity = GetForwardNormal() * BULLET_SPEED;
+			m_game->m_bulletSize++;
+		}
+		else{
+			RecoverableWarning(
+				__FILE__,
+				__FUNCTION__,
+				__LINE__,
+				Stringf("Cannot fire more bullets! Maximum allowed is %i.", MAX_BULLETS),
+				"Size of bullets > MAX_BULLETS"
+			);
+		}
 	}
 }
+
+void PlayerShip::BounceOffWalls()
+{
+	if (IsOffscreen())
+	{
+		m_velocity = -m_velocity;
+	}
+}
+
+void PlayerShip::Respawn()
+{
+	m_position = Vec2(WORLD_CENTER_X, WORLD_CENTER_Y);
+	m_isDead = false;
+	m_orientationDegrees = 0.f;
+	m_velocity = Vec2();
+}
+

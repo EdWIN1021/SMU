@@ -1,4 +1,6 @@
 #pragma once
+#include "Engine/Core/Rgba8.hpp"
+#include "Engine/Math/Vec2.hpp"
 
 constexpr int NUM_STARTING_ASTEROIDS = 6;
 constexpr int MAX_ASTEROIDS = 12;
@@ -22,5 +24,5 @@ constexpr float PLAYER_SHIP_COSMETIC_RADIUS = 2.25f;
 constexpr float RGB_SCALE = 255.f;
 
 
-void DebugDrawRing();
-void DebugDrawLine();
+void DebugDrawLine( Vec2 const& pos1, Vec2 const& pos2, float thickness, Rgba8 const& color );
+void DebugDrawRing( Vec2 const& center, float radius, float thickness, Rgba8 const& color );

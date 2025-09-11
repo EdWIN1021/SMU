@@ -19,13 +19,13 @@ public:
 
 	void Update(float deltaSeconds) override;
 	void Render() const override;
-	void DebugRender() const override;
 
 private:
 	void InitializeLocalVerts();
 	void UpdateFromKeyboard( float deltaSeconds );
 	void BounceOffWalls();
 	void Respawn();
+
 
 public:
 	Vertex  m_localVerts[NUM_SHIP_VERTS];

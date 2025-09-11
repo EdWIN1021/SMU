@@ -15,11 +15,10 @@ public:
 	bool     m_isSlowMo = false;
 	bool     m_pauseAfterNextUpdate = false;
 	Game*    m_game;
-	Camera*  m_gameCamera;
 
 private:
-	bool currentlyDown[256]{};
-	bool wasDownLastFrame[256]{};
+	bool m_isKeyDownArray[256]{};
+	bool m_wasKeydowPrevArray[256]{};
 
 public:
 	App();
@@ -32,9 +31,14 @@ public:
 	void SetIsQuitting();
 	bool IsQuitting();
 
+	void UpdateLastFrameKeys();
+
+#pragma region Input
+	bool IsKeyDown(unsigned char keyCode);
 	void OnKeyDown(unsigned char keyCode);
 	void OnKeyUp(unsigned char keyCode);
-
-	bool IsKeyDown(unsigned char keyCode);
-	bool WasKeyJustPressed(unsigned char keyCode);  // ??
-};
+	bool WasKeyJustPressed(unsigned char keyCode);
+	bool WasKeyJustReleased(unsigned char keyCode);
+	bool IsKeyHeld(unsigned char keyCode);
+#pragma endregion
+}; 

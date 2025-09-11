@@ -4,7 +4,7 @@ struct Vec2;
 struct Vec3;
 
 /* TODO: */
-constexpr float PI = 3.14159265f;
+constexpr float PI = 3.1415926535897932384626433832795f;
 
 
 // Angle utilities
@@ -31,5 +31,3 @@ bool DoSpheresOverlap(Vec3 const& centerA, float radiusA, Vec3 const& centerB, f
 // Transform utilities
 void TransformPosition2D(Vec2& posToTransform, float uniformScale, float rotationDegrees, Vec2 const& translation);
 void TransformPositionXY3D(Vec3& posToTransform, float xyScale, float zRotationDegrees, Vec2 const& xyTranslation);
-
-

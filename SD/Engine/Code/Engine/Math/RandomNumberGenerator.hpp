@@ -1,5 +1,7 @@
 #pragma once
 
+class RandomNumberGenerator;
+extern RandomNumberGenerator* g_rng;
 
 class RandomNumberGenerator
 {

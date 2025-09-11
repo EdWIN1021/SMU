@@ -1,6 +1,8 @@
 #include "RandomNumberGenerator.hpp"
 #include <cstdlib> 
 
+RandomNumberGenerator* g_rng = nullptr;
+
 int RandomNumberGenerator::RollRandomIntLessThan(int maxNotInclusive)
 {
 	return rand() % maxNotInclusive;

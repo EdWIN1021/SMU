@@ -3,11 +3,39 @@
   "WorkspaceRootPath": "C:\\p4\\Personal\\SD\\MathUnitTests\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\GameCommon.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\GameCommon.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec3.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\MathUtils.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\MathUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Renderer\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\GameCommon.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\GameCommon.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A02.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -20,16 +48,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_Custom.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\UnitTests_Custom.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{FE624E72-DD98-40D7-91FC-05334F696D51}|Code\\Game\\Game.vcxproj|solutionrelative:Code\\Game\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec3.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{959D690A-4BF9-44A9-A197-EDF2DF567E03}|..\\Engine\\Code\\Engine\\Engine.vcxproj|C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,21 +57,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "Vec2.cpp",
               "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
               "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
-              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp [Read Only]",
-              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\Vec2.cpp [Read Only]",
-              "ViewState": "AgIAAAoBAAAAAAAAAAAhwBQBAAAnAAAAAAAAAA==",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
+              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\Vec2.cpp",
+              "ViewState": "AgIAABgAAAAAAAAAAAAtwC0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-06T16:14:59.34Z",
               "IsPinned": true,
-              "EditorCaption": " [Read Only]"
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -64,60 +82,72 @@
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UnitTests_MP1A02.hpp",
-              "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A02.hpp",
-              "RelativeDocumentMoniker": "Code\\Game\\UnitTests_MP1A02.hpp",
-              "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A02.hpp [Read Only]",
-              "RelativeToolTip": "Code\\Game\\UnitTests_MP1A02.hpp [Read Only]",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-06T22:23:05.544Z",
-              "EditorCaption": " [Read Only]"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UnitTests_MP1A01.hpp",
-              "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.hpp",
-              "RelativeDocumentMoniker": "Code\\Game\\UnitTests_MP1A01.hpp",
-              "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.hpp [Read Only]",
-              "RelativeToolTip": "Code\\Game\\UnitTests_MP1A01.hpp [Read Only]",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Vec2.hpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec2.hpp",
+              "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\Vec2.hpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec2.hpp [Read Only]",
+              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\Vec2.hpp [Read Only]",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-06T22:23:01.731Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UnitTests_Custom.hpp",
-              "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_Custom.hpp",
-              "RelativeDocumentMoniker": "Code\\Game\\UnitTests_Custom.hpp",
-              "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_Custom.hpp [Read Only]",
-              "RelativeToolTip": "Code\\Game\\UnitTests_Custom.hpp [Read Only]",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-06T22:22:54.876Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameCommon.hpp",
-              "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\GameCommon.hpp",
-              "RelativeDocumentMoniker": "Code\\Game\\GameCommon.hpp",
-              "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\GameCommon.hpp [Read Only]",
-              "RelativeToolTip": "Code\\Game\\GameCommon.hpp [Read Only]",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-06T22:20:41.092Z",
-              "EditorCaption": " [Read Only]"
+              "WhenOpened": "2025-09-09T19:51:47.162Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "RandomNumberGenerator.hpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.hpp",
+              "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.hpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.hpp",
+              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-09T19:51:46.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RandomNumberGenerator.cpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.cpp",
+              "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.cpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.cpp",
+              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\RandomNumberGenerator.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-09T19:51:45.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MathUtils.cpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\MathUtils.cpp",
+              "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\MathUtils.cpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\MathUtils.cpp",
+              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\MathUtils.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-09T19:18:51.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MathUtils.hpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\MathUtils.hpp",
+              "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\MathUtils.hpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\MathUtils.hpp",
+              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\MathUtils.hpp",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-09T19:18:50.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Vec3.hpp",
               "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec3.hpp",
               "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\Vec3.hpp",
@@ -129,27 +159,87 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Vec3.cpp",
               "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec3.cpp",
               "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Math\\Vec3.cpp",
-              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec3.cpp [Read Only]",
-              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\Vec3.cpp [Read Only]",
-              "ViewState": "AgIAAIYAAAAAAAAAAIAywJAAAAARAAAAAAAAAA==",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Math\\Vec3.cpp",
+              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Math\\Vec3.cpp",
+              "ViewState": "AgIAALYAAAAAAAAAAIAywIgAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-06T22:19:30.109Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
+              "Title": "UnitTests_MP1A02.hpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A02.hpp",
+              "RelativeDocumentMoniker": "Code\\Game\\UnitTests_MP1A02.hpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A02.hpp [Read Only]",
+              "RelativeToolTip": "Code\\Game\\UnitTests_MP1A02.hpp [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-06T22:23:05.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UnitTests_MP1A01.hpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.hpp",
+              "RelativeDocumentMoniker": "Code\\Game\\UnitTests_MP1A01.hpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_MP1A01.hpp [Read Only]",
+              "RelativeToolTip": "Code\\Game\\UnitTests_MP1A01.hpp [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-06T22:23:01.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UnitTests_Custom.hpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_Custom.hpp",
+              "RelativeDocumentMoniker": "Code\\Game\\UnitTests_Custom.hpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\UnitTests_Custom.hpp [Read Only]",
+              "RelativeToolTip": "Code\\Game\\UnitTests_Custom.hpp [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-06T22:22:54.876Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GameCommon.hpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\GameCommon.hpp",
+              "RelativeDocumentMoniker": "Code\\Game\\GameCommon.hpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\GameCommon.hpp [Read Only]",
+              "RelativeToolTip": "Code\\Game\\GameCommon.hpp [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-06T22:20:41.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Main.cpp",
               "DocumentMoniker": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\Main.cpp",
               "RelativeDocumentMoniker": "Code\\Game\\Main.cpp",
               "ToolTip": "C:\\p4\\Personal\\SD\\MathUnitTests\\Code\\Game\\Main.cpp [Read Only]",
               "RelativeToolTip": "Code\\Game\\Main.cpp [Read Only]",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAsAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-06T17:05:41.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Renderer.cpp",
+              "DocumentMoniker": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Renderer\\Renderer.cpp",
+              "RelativeDocumentMoniker": "..\\Engine\\Code\\Engine\\Renderer\\Renderer.cpp",
+              "ToolTip": "C:\\p4\\Personal\\SD\\Engine\\Code\\Engine\\Renderer\\Renderer.cpp",
+              "RelativeToolTip": "..\\Engine\\Code\\Engine\\Renderer\\Renderer.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-09T19:15:48.678Z"
             }
           ]
         }
