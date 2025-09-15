@@ -1,11 +1,15 @@
-#include "Renderer.hpp"
 #pragma comment( lib, "opengl32") 
 #include <windows.h>
 #include <gl/gl.h>
-#include "../Core/Rgba8.hpp"
+
+/* Engine */
+#include "Engine/Core/Rgba8.hpp"
+#include "Engine/Core/Vertex.hpp"
+
+#include "Renderer.hpp"
 #include "Camera.hpp"
 #include "Game/GameCommon.hpp"
-#include "../Core/Vertex.hpp"
+
 
 HGLRC g_openGLRenderingContext = nullptr;
 
@@ -28,7 +32,37 @@ void Renderer::Startup()
 
 void Renderer::Shutdown()
 {
+}
 
+
+void Renderer::BeginFrame()
+{
+}
+
+
+void Renderer::EndFrame()
+{
+}
+
+
+void Renderer::BeginCamera(Camera const& camera)
+{
+	glLoadIdentity();
+
+	/* arguments are : xLeft, xRight, yBottom, yTop, zNear, zFar */ 
+	glOrtho(
+		camera.GetOrthoBottomLeft().x,  // left
+		camera.GetOrthoTopRight().x,    // right
+		camera.GetOrthoBottomLeft().y,  // bottom
+		camera.GetOrthoTopRight().y,    // top
+		0.f,
+		1.f
+	);
+}
+
+
+void Renderer::EndCamera(Camera const& camera)
+{
 }
 
 
@@ -62,30 +96,9 @@ void Renderer::CreateRenderingContext()
 
 void Renderer::ClearScreen(Rgba8 const& clearColor)
 {
-	glClearColor(clearColor.r / 255.f, clearColor.g / 255.f, clearColor.b / 255.f, clearColor.a);
+	constexpr float RGB_SCALE = 255.f;
+	glClearColor(clearColor.r / RGB_SCALE, clearColor.g / RGB_SCALE, clearColor.b / RGB_SCALE, clearColor.a);
 	glClear(GL_COLOR_BUFFER_BIT);
-}
-
-
-void Renderer::BeginCamera(Camera const& camera)
-{
-	glLoadIdentity();
-
-	// arguments are: xLeft, xRight, yBottom, yTop, zNear, zFar
-	glOrtho(
-		camera.GetOrthoBottomLeft().x,  // left
-		camera.GetOrthoTopRight().x,    // right
-		camera.GetOrthoBottomLeft().y,  // bottom
-		camera.GetOrthoTopRight().y,    // top
-		0.f,
-		1.f
-	);
-}
-
-
-void Renderer::EndCamera(Camera const& camera)
-{
-
 }
 
 
@@ -106,15 +119,3 @@ void Renderer::DrawVertexArray(int numVertexes, Vertex const* vertexes)
 }
 
 
-void Renderer::BeginFrame()
-{
-
-
-}
-
-
-void Renderer::EndFrame()
-{
-
-
-}

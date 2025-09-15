@@ -102,40 +102,27 @@ void PlayerShip::UpdateFromKeyboard(float deltaSeconds)
 	if (m_isDead)
 		return;
 
-	if(g_app->IsKeyDown('E'))
+	if(g_app->IsKeyHeld('E'))
 	{
-		Vec2 forwardVector = GetForwardNormal();
-		m_velocity += forwardVector * PLAYER_SHIP_ACCELERATION * deltaSeconds;
+		m_velocity += GetForwardNormal() * PLAYER_SHIP_ACCELERATION * deltaSeconds;
 	}
 	
-	if(g_app->IsKeyDown('S') && !g_app->IsKeyDown('F'))
+	m_isTurningLeft = g_app->IsKeyHeld('S') && !g_app->IsKeyHeld('F');
+	m_isTurningRight = g_app->IsKeyHeld('F') && !g_app->IsKeyHeld('S');
+	
+	if(m_isTurningLeft)
 	{
 		m_orientationDegrees += PLAYER_SHIP_TURN_SPEED * deltaSeconds;
 	}
-	
-	if (g_app->IsKeyDown('F') && !g_app->IsKeyDown('S'))
+
+	if (m_isTurningRight)
 	{
 		m_orientationDegrees -= PLAYER_SHIP_TURN_SPEED * deltaSeconds;
 	}
 	
 	if (g_app->WasKeyJustPressed(VK_SPACE))
 	{
-		if(m_game->m_bulletSize < MAX_BULLETS)
-		{
-			m_game->m_bullets[m_game->m_bulletSize] = new Bullet( m_game, m_position + GetForwardNormal());
-			m_game->m_bullets[m_game->m_bulletSize]->m_orientationDegrees = m_orientationDegrees;
-			m_game->m_bullets[m_game->m_bulletSize]->m_velocity = GetForwardNormal() * BULLET_SPEED;
-			m_game->m_bulletSize++;
-		}
-		else{
-			RecoverableWarning(
-				__FILE__,
-				__FUNCTION__,
-				__LINE__,
-				Stringf("Cannot fire more bullets! Maximum allowed is %i.", MAX_BULLETS),
-				"Size of bullets > MAX_BULLETS"
-			);
-		}
+		FireBullet();
 	}
 }
 
@@ -153,5 +140,10 @@ void PlayerShip::Respawn()
 	m_isDead = false;
 	m_orientationDegrees = 0.f;
 	m_velocity = Vec2();
+}
+
+void PlayerShip::FireBullet()
+{
+	g_app->m_game->CreateBullet();
 }
 

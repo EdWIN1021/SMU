@@ -1,8 +1,8 @@
 #pragma once
 
-class Engine;
-class Renderer;
 
+class Renderer;
+class Engine;
 extern Engine* g_engine;
 
 

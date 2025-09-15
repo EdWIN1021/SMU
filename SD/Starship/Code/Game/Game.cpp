@@ -1,19 +1,17 @@
 /* Engine */
-#include "Engine/Math/RandomNumberGenerator.hpp"
-#include "Engine/Math/Vec2.hpp"
-
 #include "Engine/Core/ErrorWarningAssert.hpp"
 #include "Engine/Core/StringUtils.hpp"
-
 #include "Engine/Renderer/Renderer.hpp"
 #include "Engine/Renderer/Camera.hpp"
+#include "Engine/Math/MathUtils.hpp"
+#include "Engine/Math/RandomNumberGenerator.hpp"
+#include "Engine/Math/Vec2.hpp"
 
 #include "App.hpp"
 #include "Game.hpp"
 #include "PlayerShip.hpp"
 #include "Asteroid.hpp"
 #include "Bullet.hpp"
-#include <Engine/Math/MathUtils.hpp>
 
 
 Game::Game()
@@ -39,23 +37,15 @@ Game::~Game()
 
 void Game::Update(float deltaSeconds)
 {
-	HandleInput();
-
-	if(g_app->m_isPaused)
-	{
-		deltaSeconds = 0.f;
-	}
-
-	if(g_app->m_isSlowMo)
-	{
-		deltaSeconds /= 10.f;
-	}
+	HandleGameInput();
 
 	UpdatePlayerShip(deltaSeconds);
 	UpdateBullets(deltaSeconds);
 	UpdateAsteroid(deltaSeconds);
 
 	OnBeginOverlap();
+
+	DestroyGarbageEntities();
 }
 
 
@@ -69,15 +59,6 @@ void Game::UpdateBullets(float deltaSeconds)
 {
 	for (int bulletIndex = 0; bulletIndex < MAX_BULLETS; ++bulletIndex)
 	{
-		if (m_bullets[bulletIndex] && m_bullets[bulletIndex]->m_isGarbage)
-		{
-			delete m_bullets[bulletIndex];
-			m_bullets[bulletIndex] = nullptr;
-			m_bulletSize--;
-			continue;
-		}
-		
-		
 		if (m_bullets[bulletIndex])
 		{
 			m_bullets[bulletIndex]->Update(deltaSeconds);
@@ -90,22 +71,12 @@ void Game::UpdateAsteroid(float deltaSeconds)
 {
 	for (int asteroidIndex = 0; asteroidIndex < MAX_ASTEROIDS; ++ asteroidIndex)
 	{
-		if (m_asteroids[asteroidIndex] && m_asteroids[asteroidIndex]->m_isGarbage)
-		{
-			delete m_asteroids[asteroidIndex];
-			m_asteroids[asteroidIndex] = nullptr;
-			m_asteroidSize--;
-			continue;
-		}
-
-
 		if (m_asteroids[asteroidIndex])
 		{
 			m_asteroids[asteroidIndex]->Update(deltaSeconds);
 		}
 	}
 }
-
 
 void Game::Render() const
 {
@@ -114,7 +85,12 @@ void Game::Render() const
 	RenderPlayerShip();
 	RenderBullets();
 	RenderAsteroid();
-	DebugRenderAll();
+
+	if(g_app->m_IsDebugMode)
+	{
+		DebugRenderAll();
+	}
+	
 
 	g_engine->m_render->EndCamera(*m_gameCamera);
 }
@@ -152,24 +128,64 @@ void Game::RenderBullets() const
 }
 
 
-void Game::SpawnRandomAsteroid()
+Asteroid* Game::SpawnNewRandomAsteroid()
 {
-	for( int asteroidIndex = 0; asteroidIndex < MAX_ASTEROIDS; ++ asteroidIndex)
+	for (int asteroidIndex = 0; asteroidIndex < MAX_ASTEROIDS; ++asteroidIndex)
 	{
-		if(!m_asteroids[asteroidIndex])
+		if (!m_asteroids[asteroidIndex])
 		{
 			m_asteroids[asteroidIndex] = CreateRandomAsteroid();
-			m_asteroidSize++;
-			return;
+			return m_asteroids[asteroidIndex];
+		}
+	}
+
+	ERROR_RECOVERABLE("Cannot spawn more asteroids! Maximum allowed is 12");
+	return nullptr;
+}
+
+Bullet* Game::CreateBullet()
+{
+	for ( int bulletIndex = 0; bulletIndex < MAX_BULLETS; ++ bulletIndex )
+	{
+		if (!m_bullets[bulletIndex])
+		{
+			m_bullets[bulletIndex] = new Bullet(this, m_playerShip->m_position + m_playerShip->GetForwardNormal());
+			m_bullets[bulletIndex]->m_orientationDegrees = m_playerShip->m_orientationDegrees;
+			m_bullets[bulletIndex]->m_velocity = m_playerShip->GetForwardNormal() * BULLET_SPEED;
+			return m_bullets [bulletIndex];
+		}
+	}
+
+	ERROR_RECOVERABLE("Cannot fire more bullets! Maximum allowed is 20.");
+	return nullptr;
+}
+
+void Game::DestroyGarbageEntities()
+{
+	for (int asteroidIndex = 0; asteroidIndex < MAX_ASTEROIDS; ++ asteroidIndex )
+	{
+		if(m_asteroids[asteroidIndex] && m_asteroids[asteroidIndex]->m_isGarbage)
+		{
+			delete m_asteroids[asteroidIndex];
+			m_asteroids[asteroidIndex] = nullptr;
+		}
+	}
+
+	for (int bulletIndex = 0; bulletIndex < MAX_BULLETS; ++ bulletIndex)
+	{
+		if (m_bullets[bulletIndex] && m_bullets[bulletIndex]->m_isGarbage)
+		{
+			delete m_bullets[bulletIndex];
+			m_bullets[bulletIndex] = nullptr;
 		}
 	}
 }
 
 void Game::SpawnRandomAsteroids()
 {
-	while (m_asteroidSize < MAX_ASTEROIDS)
+	for ( int asteroidIndex = 0; asteroidIndex < NUM_STARTING_ASTEROIDS; ++ asteroidIndex )
 	{
-		m_asteroids[m_asteroidSize++] = CreateRandomAsteroid();
+		m_asteroids[asteroidIndex] = SpawnNewRandomAsteroid();
 	}
 }
 
@@ -195,10 +211,17 @@ Asteroid* Game::CreateRandomAsteroid()
 
 void Game::OnBeginOverlap()
 {
-	for ( int asteroidIndx = 0; asteroidIndx < MAX_ASTEROIDS; ++ asteroidIndx)
+	DetectShipAsteroidCollision();
+	DetectBulletAsteroidCollision();
+}
+
+
+void Game::DetectShipAsteroidCollision()
+{
+	for (int asteroidIndx = 0; asteroidIndx < MAX_ASTEROIDS; ++asteroidIndx)
 	{
 		Asteroid* asteroid = m_asteroids[asteroidIndx];
-		if(asteroid)
+		if (asteroid)
 		{
 			bool isPlayerShipOverlapped = DoDiscsOverlap(
 				m_playerShip->m_position,
@@ -209,17 +232,15 @@ void Game::OnBeginOverlap()
 
 			if (isPlayerShipOverlapped)
 			{
-				m_playerShip->m_isDead = true;
+				m_playerShip->Die();
 				asteroid->m_isDead = true;
 				asteroid->m_isGarbage = true;
 			}
 		}
 	}
-
-	CheckBulletHitAsteroid();
 }
 
-void Game::CheckBulletHitAsteroid()
+void Game::DetectBulletAsteroidCollision()
 {
 	for (int asteroidIndx = 0; asteroidIndx < MAX_ASTEROIDS; ++asteroidIndx)
 	{
@@ -251,45 +272,11 @@ void Game::CheckBulletHitAsteroid()
 	}
 }
 
-void Game::HandleInput()
+void Game::HandleGameInput()
 {
-	if( g_app->WasKeyJustPressed('P') )
-	{
-		g_app->m_isPaused = !g_app->m_isPaused;
-	}
-
-	if( g_app->WasKeyJustPressed('O') )
-	{
-		g_app->m_pauseAfterNextUpdate = true;
-		g_app->m_isPaused = false;
-	}
-
-	if (g_app->IsKeyHeld('T'))
-	{
-		g_app->m_isSlowMo = true;
-	}
-
-	if (g_app->WasKeyJustReleased('T'))
-	{
-		g_app->m_isSlowMo = false;
-	}
-
 	if ( g_app->WasKeyJustPressed('I') )
 	{
-		if(m_asteroidSize < MAX_ASTEROIDS)
-		{
-			SpawnRandomAsteroid();
-		}
-		else
-		{
-			RecoverableWarning(
-				__FILE__,
-				__FUNCTION__,
-				__LINE__,
-				Stringf("Cannot spawn more asteroids! Maximum allowed is %i.", MAX_ASTEROIDS),
-				"Size of asteroids > MAX_ASTEROIDS"
-			);
-		}
+		SpawnNewRandomAsteroid();
 	}
 }
 

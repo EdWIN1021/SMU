@@ -7,6 +7,7 @@
 #include "Game.hpp"
 #include "Bullet.hpp"
 
+
 App* g_app = nullptr;
 
 
@@ -29,14 +30,26 @@ App::~App()
 
 void App::RunFrame()
 {
-	float fakeDeltaSecond = 1.f / 60.f;
-	Update(fakeDeltaSecond);
+
+	Update(FAKE_DELTASECOND);
 	Render();
 }
 
 
 void App::Update(float deltaSeconds)
 {
+	HandleAppInput();
+
+	if (m_isPaused)
+	{
+		deltaSeconds = 0.f;
+	}
+
+	if (m_isSlowMo)
+	{
+		deltaSeconds /= 10.f;
+	}
+
 	m_game->Update(deltaSeconds);
 	UpdateLastFrameKeys();
 }
@@ -72,6 +85,7 @@ void App::OnKeyUp(unsigned char keyCode)
 	m_isKeyDownArray[keyCode] = false;
 }
 
+
 bool App::IsKeyDown(unsigned char keyCode)
 {
 	return m_isKeyDownArray[keyCode];
@@ -95,11 +109,62 @@ bool App::IsKeyHeld(unsigned char keyCode)
 	return m_isKeyDownArray[keyCode] && m_wasKeydowPrevArray[keyCode];
 }
 
+
 void App::UpdateLastFrameKeys()
 {
-	for( int i = 0; i < 256; ++ i )
+	constexpr int NUM_KEYS = 256;
+	for( int i = 0; i < NUM_KEYS; ++ i )
 	{
 		m_wasKeydowPrevArray[i] = m_isKeyDownArray[i];
 	}
 }
+
+
+void App::ResetGame()
+{
+	delete m_game;
+	m_game = nullptr;
+	m_game = new Game();
+}
+
+
+void App::HandleAppInput()
+{
+	if (g_app->WasKeyJustPressed('O'))
+	{
+		g_app->m_pauseAfterNextUpdate = true;
+		g_app->m_isPaused = false;
+	}
+
+	if (WasKeyJustPressed('P'))
+	{
+		m_isPaused = !m_isPaused;
+	}
+
+	if (WasKeyJustPressed('Q'))
+	{
+		SetIsQuitting();
+	}
+
+	if (IsKeyHeld('T'))
+	{
+		m_isSlowMo = true;
+	}
+
+	if (WasKeyJustReleased('T'))
+	{
+		m_isSlowMo = false;
+	}
+
+	if (WasKeyJustPressed(VK_F1))
+	{
+		m_IsDebugMode = !m_IsDebugMode;
+	}
+
+	if (WasKeyJustPressed(VK_F8))
+	{
+		ResetGame();
+	}
+}
+
 

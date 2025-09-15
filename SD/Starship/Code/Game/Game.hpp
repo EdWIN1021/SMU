@@ -12,11 +12,9 @@ class Game
 {
 public:
 	PlayerShip*   m_playerShip = nullptr;
-	Asteroid*     m_asteroids[MAX_ASTEROIDS] = { nullptr };
-	Bullet*       m_bullets[MAX_BULLETS] = { nullptr };
+	Asteroid*     m_asteroids[MAX_ASTEROIDS] = {};
+	Bullet*       m_bullets[MAX_BULLETS] = {};
 	Camera*       m_gameCamera;
-	unsigned int  m_asteroidSize = 0;
-	unsigned int  m_bulletSize = 0;
 
 	Game();
 	~Game();
@@ -31,19 +29,28 @@ public:
 	void UpdateBullets( float deltaSeconds );
 	void UpdateAsteroid( float deltaSeconds );
 
+
+
+
+	void SpawnRandomAsteroids();
+	Asteroid* CreateRandomAsteroid();
+	Asteroid* SpawnNewRandomAsteroid();
+	
+	Bullet* CreateBullet();
+
+	void DestroyGarbageEntities();
+
+	/* Physics */
+	void OnBeginOverlap();
+	void DetectShipAsteroidCollision();
+	void DetectBulletAsteroidCollision();
+
+	/* input */
+	void HandleGameInput();
+
+private:
 #pragma region Debug
 	void DebugRenderAll() const;
 	void DebugDrawLines() const;
 #pragma endregion
-
-	void SpawnRandomAsteroid();
-	void SpawnRandomAsteroids();
-	Asteroid* CreateRandomAsteroid();
-
-	/* Physics */
-	void OnBeginOverlap();
-	void CheckBulletHitAsteroid();
-
-	/* input */
-	void HandleInput();
 };

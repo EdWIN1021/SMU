@@ -71,4 +71,7 @@
     </ClInclude>
     <ClInclude Include="GameCommon.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\ReadMe.txt" />
+  </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@ struct Rgba8;
 class Camera;
 struct Vertex;
 
+
 class Renderer
 {
 public:
@@ -13,12 +14,14 @@ public:
 	~Renderer();
 
 	void Startup();
+	void Shutdown();
+
 	void BeginFrame();
 	void EndFrame();
-	void Shutdown();
 
 	void CreateRenderingContext();
 	void ClearScreen(Rgba8 const& clearColor);
+
 	void BeginCamera(Camera const& camera);
 	void EndCamera(Camera const& camera);
 

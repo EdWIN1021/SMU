@@ -22,28 +22,28 @@ LRESULT CALLBACK WindowsMessageHandlingProcedure(HWND windowHandle, UINT wmMessa
 	switch (wmMessageCode)
 	{
 		// App close requested via "X" button, or right-click "Close Window" on task bar, or "Close" from system menu, or Alt-F4
-	case WM_CLOSE:
-	{
-		g_app->m_isQuitting = true;
-		return 0; // "Consumes" this message (tells Windows "okay, we handled it")
-	}
+		case WM_CLOSE:
+		{
+			g_app->SetIsQuitting();
+			return 0; // "Consumes" this message (tells Windows "okay, we handled it")
+		}
 
-	// Raw physical keyboard "key-was-just-depressed" event (case-insensitive, not translated)
-	case WM_KEYDOWN:
-	{
-		unsigned char asKey = (unsigned char)wParam;
-		g_app->OnKeyDown(asKey);
+		// Raw physical keyboard "key-was-just-depressed" event (case-insensitive, not translated)
+		case WM_KEYDOWN:
+		{
+			unsigned char asKey = (unsigned char)wParam;
+			g_app->OnKeyDown(asKey);
 
-		break;
-	}
+			break;
+		}
 
-	case WM_KEYUP:
-	{
-		unsigned char asKey = (unsigned char)wParam;
-		g_app->OnKeyUp(asKey);
+		case WM_KEYUP:
+		{
+			unsigned char asKey = (unsigned char)wParam;
+			g_app->OnKeyUp(asKey);
 
-		break;
-	}
+			break;
+		}
 	}
 
 	// Send back to Windows any unhandled/unconsumed messages we want other apps to see (e.g. play/pause in music apps, etc.)

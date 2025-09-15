@@ -1,14 +1,12 @@
 ﻿  App.cpp
-  Asteroid.cpp
   Bullet.cpp
   Entity.cpp
   Game.cpp
-  GameCommon.cpp
-  Main_Windows.cpp
   PlayerShip.cpp
   Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 242 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  9 of 253 functions ( 3.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    4 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Game.vcxproj -> C:\p4\Personal\SD\Starship\Temporary\Starship_x64_Release\Starship_Release_x64.exe
   Copying Starship_Release_x64.exe to C:\p4\Personal\SD\Starship\Run...

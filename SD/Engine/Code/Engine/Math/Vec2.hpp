@@ -12,8 +12,8 @@ public:
 	// Construction/Destruction
 	~Vec2() {}												// destructor (do nothing)
 	Vec2() {}												// default constructor (do nothing)
-	Vec2(Vec2 const& copyFrom);							// copy constructor (from another vec2)
-	explicit Vec2(float initialX, float initialY);		// explicit constructor (from x, y)
+	Vec2(Vec2 const& copyFrom);							   // copy constructor (from another vec2)
+	explicit Vec2(float initialX, float initialY);		  // explicit constructor (from x, y)
 
 
 	// Static methods (e.g. creation functions)

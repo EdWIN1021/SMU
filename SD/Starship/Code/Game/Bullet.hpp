@@ -1,14 +1,13 @@
 #pragma once
-#include "Entity.hpp"
-#include <Engine/Core/Vertex.hpp>
-#include "Engine/Math/Vec2.hpp"
-#include "Engine/Core/Engine.hpp"
 
+#include "Entity.hpp"
+#include "Engine/Core/Engine.hpp"
+#include "Engine/Core/Vertex.hpp"
+#include "Engine/Math/Vec2.hpp"
 
 
 constexpr int NUM_BULLET_TRIS = 2;
 constexpr int NUM_BULLET_VERTS = 3 * NUM_BULLET_TRIS;
-
 
 class Bullet : public Entity
 {
@@ -25,4 +24,5 @@ private:
 
 private:
 	Vertex  m_localVerts[NUM_BULLET_VERTS];
-};
+
+}; 

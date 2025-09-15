@@ -25,6 +25,7 @@ private:
 	void UpdateFromKeyboard( float deltaSeconds );
 	void BounceOffWalls();
 	void Respawn();
+	void FireBullet();
 
 
 public:

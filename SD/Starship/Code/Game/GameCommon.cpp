@@ -42,7 +42,6 @@ void DebugDrawLine(Vec2 const& startPos, Vec2 const& endPos, float thickness, Rg
 	verts[4].m_color = color;
 	verts[5].m_color = color;
 
-	
 	g_engine->m_render->DrawVertexArray(NUM_VERTS, verts);
 }
 

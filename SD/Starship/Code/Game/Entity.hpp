@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Engine/Math/Vec2.hpp"
 
 
@@ -13,10 +14,12 @@ public:
 
 	virtual void Update(float deltaSeconds) = 0;
 	virtual void Render() const = 0;
+
+	virtual void Die();
 	virtual void DebugRender() const;
 
-	bool IsOffscreen() const;
 	Vec2 GetForwardNormal() const;
+	bool IsOffscreen() const;
 	bool IsAlive() const;
 
 public:
@@ -27,7 +30,7 @@ public:
 	float    m_angularVelocity       = 0.f;
 	float    m_physicsRadius         = 5.0f;
 	float    m_cosmeticRadius        = 10.f;
-	int      m_health                = 1;                  
+	int      m_health                = 1;      
 	bool     m_isDead                = false;
 	bool     m_isGarbage             = false; 
 };

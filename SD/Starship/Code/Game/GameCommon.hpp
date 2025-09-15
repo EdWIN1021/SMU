@@ -21,7 +21,6 @@ constexpr float PLAYER_SHIP_TURN_SPEED = 300.f;
 constexpr float PLAYER_SHIP_PHYSICS_RADIUS = 1.75f;
 constexpr float PLAYER_SHIP_COSMETIC_RADIUS = 2.25f;
 
-constexpr float RGB_SCALE = 255.f;
 
 
 void DebugDrawLine( Vec2 const& pos1, Vec2 const& pos2, float thickness, Rgba8 const& color );

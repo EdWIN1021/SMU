@@ -15,14 +15,11 @@ Bullet::Bullet(Game* owner, Vec2 const& startPos)
 
 Bullet::~Bullet()
 {
-
 }
 
 void Bullet::Update(float deltaSeconds)
 {
-	Vec2 forward = GetForwardNormal();
-	 m_position += m_velocity * deltaSeconds;
-
+	m_position += m_velocity * deltaSeconds;
 	if( IsOffscreen() )
 	{
 		m_isDead = true;
@@ -32,7 +29,7 @@ void Bullet::Update(float deltaSeconds)
 
 void Bullet::Render() const
 {
-	if (m_isDead)
+	if ( m_isDead ) 
 		return;
 
 	Vertex tempWorldVerts[NUM_BULLET_VERTS];
